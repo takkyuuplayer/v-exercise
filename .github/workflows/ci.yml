@@ -6,9 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Install v
+        run: |
+          git clone https://github.com/vlang/v ~/v
+          cd ~/v
+          make
+          sudo ./v symlink
       - uses: actions/checkout@v1
-      - name: Use v
-        uses: takkyuuplayer/vlang-action@master
       - name: fmt and test
         run: |
           v test-fmt
