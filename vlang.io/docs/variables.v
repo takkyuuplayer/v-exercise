@@ -1,2 +1,4 @@
-name := "Bob"
-println(name)
+fn main() {
+	name := 'Bob'
+	println(name)
+}

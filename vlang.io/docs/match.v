@@ -8,5 +8,8 @@ fn main() {
 		'linux' {
 			println('Linux.')
 		}
+		else {
+			println('windows')
+		}
 	}
 }
