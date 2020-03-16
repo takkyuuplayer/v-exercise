@@ -1,2 +1,3 @@
 vlang.io/docs/*
-!vlang.io/docs/*.v
+books/programming-language-c/*/*
+!*.v
