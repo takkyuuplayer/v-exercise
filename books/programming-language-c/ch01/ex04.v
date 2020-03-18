@@ -1,3 +1,6 @@
+// Exercise 1-4. Write a program to print the corresponding Celsius to Fahrenheit table.
+// Kernighan, Brian W.. C Programming Language (p. 13). Pearson Education. Kindle Edition. 
+
 fn main() {
 	mut celsius := -20.0
 	C.printf("  C      F\n")

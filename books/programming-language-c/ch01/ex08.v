@@ -1,3 +1,6 @@
+// Exercise 1-8. Write a program to count blanks, tabs, and newlines.
+// Kernighan, Brian W.. C Programming Language (p. 20). Pearson Education. Kindle Edition. 
+
 fn main() {
 	mut c := 0
 	mut new_lines := 0
