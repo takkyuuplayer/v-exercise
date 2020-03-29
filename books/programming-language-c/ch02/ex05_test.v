@@ -1,7 +1,7 @@
 // Exercise 2-5. Write the function any(s1,s2), which returns the first location in the string s1 where any character from the string s2 occurs, or −1 if s1 contains no characters from s2. (The standard library function strpbrk does the same job but returns a pointer to the location.)
 // Kernighan, Brian W.. C Programming Language (p. 48). Pearson Education. Kindle Edition.
 fn test_any() {
-	assert any('a', '') == 'a'.index('') or {}
+	assert any('a', '') == 0
 	assert any('a', 'a') == 0
 	assert any('a', 'ab') == -1
 	assert any('xyzabc', 'ab') == 3
