@@ -15,7 +15,7 @@ fn main() {
 		}
 		else if length > 0 {
 			if length > max_length {
-				word_lengthes[max_length-1]++
+				word_lengthes[max_length - 1]++
 			}
 			else {
 				word_lengthes[length - 1]++
