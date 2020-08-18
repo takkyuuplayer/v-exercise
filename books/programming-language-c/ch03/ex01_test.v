@@ -5,15 +5,15 @@ import benchmark
 
 fn test_binsearch() {
 	mut v := [0]
-	rand.seed(100)
+	rand.seed([u32(100), 0])
 	for i in 1 .. 10000000 {
-		if rand.next(4) == 0 {
+		if rand.intn(4) == 0 {
 			v << i
 		}
 	}
 	mut test_cases := []int{}
-	for i in 1 .. 100 {
-		test_cases << rand.next(v.len)
+	for _ in 1 .. 100 {
+		test_cases << rand.intn(v.len)
 	}
 	mut bench := benchmark.new_benchmark()
 	for test_case in test_cases {
@@ -35,9 +35,9 @@ fn binsearch(x int, v []int) int {
 	mut mid := 0
 	for (low <= high) {
 		mid = (low + high) / 2
-		if (x < v[mid]) {
+		if x < v[mid] {
 			high = mid - 1
-		} else if (x > v[mid]) {
+		} else if x > v[mid] {
 			low = mid + 1
 		} else {
 			return mid
@@ -55,9 +55,9 @@ fn binsearch2(x int, v []int) int {
 	mut high := v.len - 1
 	mut mid := (low + high) / 2
 	for (low <= high && v[mid] != x) {
-		if (x < v[mid]) {
+		if x < v[mid] {
 			high = mid - 1
-		} else if (x > v[mid]) {
+		} else if x > v[mid] {
 			low = mid + 1
 		}
 		mid = (low + high) / 2

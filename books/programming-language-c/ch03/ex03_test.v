@@ -35,7 +35,7 @@ fn expand(s string) string {
 		if (`0` <= from && from <= `9` && `0` <= to && to <= `9`) ||
 			(`a` <= from && from <= `z` && `a` <= to && to <= `z`) ||
 			(`A` <= from && from <= `Z` && `A` <= to && to <= `Z`) {
-			direction := if from <= to { 1 } else { -1 }
+			direction := byte(if from <= to { 1 } else { -1 })
 			for j := s[i] + direction; j != to; j += direction {
 				expanded += j.str()
 			}

@@ -9,7 +9,7 @@ fn bitcount(x u16) int {
 	mut ret := x
 	mut bit_count := 0
 	for {
-		if (ret == 0) {
+		if ret == 0 {
 			break
 		}
 		bit_count++

@@ -14,7 +14,7 @@ fn squeeze(s1, s2 string) string {
 	}
 	mut ret := ''
 	for i := 0; i < s1.len; i++ {
-		if !s1[i].str() in to_remove {
+		if !(s1[i].str() in to_remove) {
 			ret += s1[i].str()
 		}
 	}
