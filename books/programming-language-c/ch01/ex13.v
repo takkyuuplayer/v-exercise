@@ -12,12 +12,10 @@ fn main() {
 	for c := C.getchar(); c != C.EOF; c = C.getchar() {
 		if c != ` ` && c != `\n` && c != `\t` {
 			length++
-		}
-		else if length > 0 {
+		} else if length > 0 {
 			if length > max_length {
 				word_lengthes[max_length - 1]++
-			}
-			else {
+			} else {
 				word_lengthes[length - 1]++
 			}
 			length = 0

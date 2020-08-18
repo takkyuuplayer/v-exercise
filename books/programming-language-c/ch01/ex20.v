@@ -11,12 +11,10 @@ fn main() {
 			filling := tabstop - (columns % tabstop)
 			print(' '.repeat(filling))
 			columns += filling
-		}
-		else if c == `\n` {
+		} else if c == `\n` {
 			println('')
 			columns = 0
-		}
-		else {
+		} else {
 			C.printf('%c', c)
 			columns++
 		}

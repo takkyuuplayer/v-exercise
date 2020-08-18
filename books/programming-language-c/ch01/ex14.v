@@ -21,5 +21,5 @@ fn main() {
 		C.printf('%c: ', i + lower_bound)
 		println(strings.repeat(`-`, count))
 	}
-	println("others: ${nothers}")
+	println('others: $nothers')
 }

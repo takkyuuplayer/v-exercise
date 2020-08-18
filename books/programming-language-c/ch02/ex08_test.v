@@ -6,5 +6,5 @@ fn test_rightrot() {
 }
 
 fn rightrot(x, n u16) int {
-	return (x>>n) | ((x & ~(~0<<n))<<(16 - n))
+	return (x >> n) | ((x & ~(~0 << n)) << (16 - n))
 }

@@ -3,5 +3,7 @@ fn foo() (int, int) {
 }
 
 a, b := foo()
-println(a) // 2
-println(b) // 3
+println(a)
+// 2
+println(b)
+// 3

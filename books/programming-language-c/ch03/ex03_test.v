@@ -32,13 +32,14 @@ fn expand(s string) string {
 		}
 		from := s[i]
 		to := s[i + 2]
-		if (`0` <= from && from <= `9` && `0` <= to && to <= `9`) || (`a` <= from && from <= `z` && `a` <= to && to <= `z`) || (`A` <= from && from <= `Z` && `A` <= to && to <= `Z`) {
+		if (`0` <= from && from <= `9` && `0` <= to && to <= `9`) ||
+			(`a` <= from && from <= `z` && `a` <= to && to <= `z`) ||
+			(`A` <= from && from <= `Z` && `A` <= to && to <= `Z`) {
 			direction := if from <= to { 1 } else { -1 }
 			for j := s[i] + direction; j != to; j += direction {
 				expanded += j.str()
 			}
-		}
-		else {
+		} else {
 			expanded += s[i + 1].str()
 		}
 		i++

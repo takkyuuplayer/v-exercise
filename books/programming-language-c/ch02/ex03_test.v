@@ -24,14 +24,11 @@ fn htoi(hexadecimal string) int {
 		digit := hex[i]
 		if `0` <= digit && digit <= `9` {
 			ret = 16 * ret + (digit - `0`)
-		}
-		else if `a` <= digit && digit <= `f` {
+		} else if `a` <= digit && digit <= `f` {
 			ret = 16 * ret + (digit - `a` + 10)
-		}
-		else if `A` <= digit && digit <= `F` {
+		} else if `A` <= digit && digit <= `F` {
 			ret = 16 * ret + (digit - `A` + 10)
-		}
-		else {
+		} else {
 			// Assume 0
 			ret = 16 * ret
 		}

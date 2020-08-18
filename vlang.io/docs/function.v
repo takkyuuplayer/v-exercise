@@ -3,7 +3,7 @@ fn main() {
 	println(sub(100, 50))
 }
 
-fn add(x int, y int) int {
+fn add(x, y int) int {
 	return x + y
 }
 

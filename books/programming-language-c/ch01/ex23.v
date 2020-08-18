@@ -49,7 +49,7 @@ fn main() {
 				C.printf('%c', c)
 				prev = C.EOF
 				continue
-			} else if prev != `\\` && c == `'` {
+			} else if prev != `\\` && c == `\'` {
 				in_single_quote = false
 				C.printf('%c', c)
 				prev = C.EOF
@@ -74,7 +74,7 @@ fn main() {
 			prev = c
 			continue
 		}
-		if c == `'` {
+		if c == `\'` {
 			in_single_quote = true
 			prev = c
 			continue

@@ -8,7 +8,6 @@ fn main() {
 	mut s := 'hello '
 	s += 'world' // `+=` is used to append to a string
 	println(s) // "hello world"
-
 	raw := r'hello\nworld'
 	println(raw)
 }

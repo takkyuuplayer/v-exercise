@@ -8,14 +8,13 @@ fn test_squeeze() {
 }
 
 fn squeeze(s1, s2 string) string {
-	mut to_remove := map[string]bool
+	mut to_remove := map[string]bool{}
 	for i := 0; i < s2.len; i++ {
 		to_remove[s2[i].str()] = true
 	}
-
-	mut ret := ""
+	mut ret := ''
 	for i := 0; i < s1.len; i++ {
-		if ! s1[i].str() in to_remove {
+		if !s1[i].str() in to_remove {
 			ret += s1[i].str()
 		}
 	}

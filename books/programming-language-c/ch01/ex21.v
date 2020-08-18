@@ -22,8 +22,7 @@ fn main() {
 			print(' '.repeat(space_count))
 			colmuns += space_count
 			space_count = 0
-		}
-		else {
+		} else {
 			print('\t')
 			colmuns += current_tab_size
 			space_count -= current_tab_size

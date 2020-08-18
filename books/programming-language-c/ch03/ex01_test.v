@@ -11,7 +11,7 @@ fn test_binsearch() {
 			v << i
 		}
 	}
-	mut test_cases := []int
+	mut test_cases := []int{}
 	for i in 1 .. 100 {
 		test_cases << rand.next(v.len)
 	}
@@ -37,15 +37,17 @@ fn binsearch(x int, v []int) int {
 		mid = (low + high) / 2
 		if (x < v[mid]) {
 			high = mid - 1
-		}
-		else if (x > v[mid]) {
+		} else if (x > v[mid]) {
 			low = mid + 1
-		}
-		else {
+		} else {
 			return mid
 		}
 	}
-	return if x == v[mid] { mid } else { -1 }
+	return if x == v[mid] {
+		mid
+	} else {
+		-1
+	}
 }
 
 fn binsearch2(x int, v []int) int {
@@ -55,11 +57,14 @@ fn binsearch2(x int, v []int) int {
 	for (low <= high && v[mid] != x) {
 		if (x < v[mid]) {
 			high = mid - 1
-		}
-		else if (x > v[mid]) {
+		} else if (x > v[mid]) {
 			low = mid + 1
 		}
 		mid = (low + high) / 2
 	}
-	return if x == v[mid] { mid } else { -1 }
+	return if x == v[mid] {
+		mid
+	} else {
+		-1
+	}
 }

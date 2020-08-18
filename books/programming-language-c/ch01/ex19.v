@@ -1,6 +1,5 @@
 // Exercise 1-19. Write a function reverse(s) that reverses the character string s. Use it to write a program that reverses its input a line at a time.
-// Kernighan, Brian W.. C Programming Language (p. 31). Pearson Education. Kindle Edition. 
-
+// Kernighan, Brian W.. C Programming Language (p. 31). Pearson Education. Kindle Edition.
 import os
 
 fn main() {
@@ -9,4 +8,3 @@ fn main() {
 		println(trimmed.reverse())
 	}
 }
-

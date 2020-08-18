@@ -10,15 +10,10 @@ fn escape(from string) string {
 	mut to := ''
 	for letter in from {
 		to += match letter {
-			`\t`{
-				'\\t'
-			}
-			`\n`{
-				'\\n'
-			}
-			else {
-				letter.str()}
-	}
+			`\t` { '\\t' }
+			`\n` { '\\n' }
+			else { letter.str() }
+		}
 	}
 	return to
 }
@@ -32,20 +27,16 @@ fn unescape(from string) string {
 			if i == from.len {
 				to += '\\'
 				break
-			}
-			else if from[i] == `t` {
+			} else if from[i] == `t` {
 				to += '\t'
 				continue
-			}
-			else if from[i] == `n` {
+			} else if from[i] == `n` {
 				to += '\n'
 				continue
+			} else {
+				to += '\\$from[i].str()'
 			}
-			else {
-				to += '\\${from[i].str()}'
-			}
-		}
-		else {
+		} else {
 			to += from[i].str()
 		}
 	}
