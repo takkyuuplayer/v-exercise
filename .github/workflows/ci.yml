@@ -1,21 +1,26 @@
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  build:
+  ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - name: Install v
+      - name: Checkout V
+        uses: actions/checkout@v2
+        with:
+          repository: vlang/v
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: repo
+      - name: Build V
         run: |
-          git clone https://github.com/vlang/v ~/v
-          cd ~/v
           make
           sudo ./v symlink
-      - uses: actions/checkout@v1
-      - name: fmt and test
+
+      - name: Compile, Vet, Test
         run: |
-          v test-fmt
-          v -stats test ./
-        env:
-          CI: true
+          cd repo
+          v vet .
+          v test .
