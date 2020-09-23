@@ -21,8 +21,12 @@ jobs:
           make
           sudo ./v symlink
 
-      - name: Compile, Vet, Test
+      - name: v vet .
         run: |
           cd repo
           v vet .
+
+      - name: v test .
+        run: |
+          cd repo
           v test .
