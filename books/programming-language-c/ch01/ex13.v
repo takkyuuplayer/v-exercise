@@ -22,6 +22,6 @@ fn main() {
 		}
 	}
 	for i, count in word_lengthes {
-		println('${i+1}: ' + strings.repeat(`-`, count))
+		println('${i + 1}: ' + strings.repeat(`-`, count))
 	}
 }

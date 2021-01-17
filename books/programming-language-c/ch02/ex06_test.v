@@ -6,6 +6,6 @@ fn test_setbits() {
 	assert setbits(0b10101010, 5, 4, 0b11100011) == 0b10001110
 }
 
-fn setbits(x, p, n, y int) int {
+fn setbits(x int, p int, n int, y int) int {
 	return (x & ((~0 << p + 1) | ~(~0 << n))) | ((y & ~(~0 << n)) << p + 1 - n)
 }

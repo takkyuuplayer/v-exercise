@@ -6,7 +6,7 @@ fn test_invert() {
 	assert invert(0b10101010, 3, 2) == 0b10100110
 }
 
-fn invert(x, p, n int) int {
+fn invert(x int, p int, n int) int {
 	z := (~0 << p + 1) | ~(~0 << n)
 	return (x & z) | (~x & ~z)
 }

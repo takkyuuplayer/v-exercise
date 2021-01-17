@@ -19,7 +19,11 @@ fn htoi(hexadecimal string) int {
 		return 0
 	}
 	mut ret := 0
-	hex := if hexadecimal[0..1] == '0x' || hexadecimal[0..1] == '0X' { hexadecimal[2..] } else { hexadecimal }
+	hex := if hexadecimal[0..1] == '0x' || hexadecimal[0..1] == '0X' {
+		hexadecimal[2..]
+	} else {
+		hexadecimal
+	}
 	for i := 0; i < hex.len; i++ {
 		digit := hex[i]
 		if `0` <= digit && digit <= `9` {

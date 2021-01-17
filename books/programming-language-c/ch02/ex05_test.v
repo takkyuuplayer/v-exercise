@@ -8,7 +8,7 @@ fn test_any() {
 	assert f_any('xyzabc', 'bcx') == -1
 }
 
-fn f_any(s1, s2 string) int {
+fn f_any(s1 string, s2 string) int {
 	if s2.len < 1 {
 		return 0
 	}

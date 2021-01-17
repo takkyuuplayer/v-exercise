@@ -5,6 +5,6 @@ fn test_rightrot() {
 	assert rightrot(23587, 3) == 0b0110101110000100
 }
 
-fn rightrot(x, n u16) int {
+fn rightrot(x u16, n u16) int {
 	return (x >> n) | ((x & ~(~0 << n)) << (16 - n))
 }
