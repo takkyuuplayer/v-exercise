@@ -209,6 +209,15 @@ fn test_struct() {
 
 		assert button == Button{Widget{9, 9}, 'Click Me'}
 	}
+	{
+		// spread operator
+		w1 := Widget{1, 2}
+		w2 := Widget{
+			...w1
+			x: 100
+		}
+		assert w2 == Widget{100, 2}
+	}
 }
 
 struct Rgba32_Component {
@@ -245,5 +254,21 @@ fn test_union() {
 		unsafe {
 			assert clr2.a == 128
 		}
+	}
+}
+
+fn square(mut ints []int) {
+	for i, v in ints {
+		ints[i] *= v
+	}
+}
+
+fn test_function() {
+	{
+		// mutable arguments
+		mut nums := [1, 2, 3]
+		square(mut nums)
+
+		assert nums == [1, 4, 9]
 	}
 }
