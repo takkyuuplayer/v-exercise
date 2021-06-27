@@ -99,3 +99,151 @@ fn test_array() {
 		assert val == 0
 	}
 }
+
+struct Abc {
+	val string
+}
+
+struct Xyz {
+	foo string
+}
+
+type Alphabet = Abc | Xyz
+
+struct MyStruct {
+	x int
+}
+
+struct MyStruct2 {
+	y string
+}
+
+type MySumType = MyStruct | MyStruct2
+
+fn test_sum_type() {
+	{
+		// is operator
+		x := Alphabet(Abc{'test'})
+		assert x is Abc
+		assert x !is Xyz
+	}
+	{
+		// match operator
+		x := Alphabet(Abc{'test'})
+		match x {
+			Abc {
+				assert true
+			}
+			Xyz {
+				assert false
+			}
+		}
+	}
+	{
+		mut x := MySumType(MyStruct{123})
+		if x is MyStruct {
+			assert typeof(x).name == 'test.MySumType'
+		}
+		if mut x is MyStruct {
+			assert typeof(x).name == 'test.MyStruct'
+		}
+	}
+}
+
+fn test_match() {
+	{
+		// comma
+		c := `v`
+		ret := match c {
+			`a`, `b` { false }
+			`v` { true }
+			else { false }
+		}
+		assert ret
+	}
+	{
+		// range
+		c := `v`
+		ret := match c {
+			`a`...`n` { false }
+			`o`...`x` { true }
+			else { false }
+		}
+		assert ret
+	}
+}
+
+struct Widget {
+mut:
+	x int
+	y int = 9
+}
+
+struct Button {
+	Widget
+	title string
+}
+
+fn test_struct() {
+	{
+		// default value
+		button := Button{}
+
+		assert button == Button{Widget{0, 9}, ''}
+	}
+	{
+		// embedding
+		mut button := Button{
+			title: 'Click me'
+		}
+		button.x = 3
+
+		assert button == Button{Widget{3, 9}, 'Click me'}
+	}
+	{
+		// function arguments
+		new_button := fn (c Widget) &Button {
+			return &Button{c, 'Click Me'}
+		}
+		button := new_button(x: 9)
+
+		assert button == Button{Widget{9, 9}, 'Click Me'}
+	}
+}
+
+struct Rgba32_Component {
+	r byte
+	g byte
+	b byte
+	a byte
+}
+
+union Rgba32 {
+	Rgba32_Component
+	value u32
+}
+
+fn test_union() {
+	{
+		// size
+		assert 4 == sizeof(Rgba32_Component)
+		assert 4 == sizeof(Rgba32)
+	}
+	{
+		clr1 := Rgba32{
+			value: 0x008811FF
+		}
+		unsafe {
+			assert clr1.value == 0x008811FF
+			assert clr1.a == 0
+		}
+		clr2 := Rgba32{
+			Rgba32_Component: {
+				a: 128
+			}
+		}
+		unsafe {
+			assert clr2.a == 128
+		}
+	}
+}
