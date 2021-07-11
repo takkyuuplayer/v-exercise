@@ -272,3 +272,141 @@ fn test_function() {
 		assert nums == [1, 4, 9]
 	}
 }
+
+fn sum(a ...int) int {
+	mut total := 0
+	for x in a {
+		total += x
+	}
+	return total
+}
+
+fn test_sum() {
+	assert sum(1, 2, 3, 5, 8) == 19
+	assert sum(...[1, 2, 3, 5, 8]) == 19
+}
+
+const golden_ratio = 1.61803
+
+fn test_const() {
+	assert test.golden_ratio == 1.61803
+}
+
+struct Dog {
+mut:
+	breed string
+}
+
+struct Cat {
+	breed string
+}
+
+fn (d Dog) speak() string {
+	return 'woof'
+}
+
+fn (c Cat) speak() string {
+	return 'meow'
+}
+
+interface Speaker {
+	breed string
+	speak() string
+}
+
+fn test_interface() {
+	mut arr := []Speaker{}
+	arr << Dog{'Leonberger'}
+	arr << Cat{'Siamese'}
+
+	assert 'a ${arr[0].breed} says: ${arr[0].speak()}' == 'a Leonberger says: woof'
+	assert 'a ${arr[1].breed} says: ${arr[1].speak()}' == 'a Siamese says: meow'
+}
+
+interface Speaker2 {
+	breed string
+}
+
+fn (s Speaker2) speak() string {
+	return 'foooo'
+}
+
+fn test_interface_method() {
+	dog := Dog{'Leonberger'}
+
+	assert dog.speak() == 'woof'
+	assert Speaker2(dog).speak() == 'foooo'
+}
+
+enum Color {
+	@none
+	red
+	green
+	blue
+}
+
+fn (c Color) cycle() Color {
+	match c {
+		.@none {
+			return .@none
+		}
+		.red {
+			return .green
+		}
+		.green {
+			return .blue
+		}
+		.blue {
+			return .red
+		}
+	}
+}
+
+fn test_enum() {
+	assert int(Color.@none) == 0
+	assert int(Color.red) == 1
+
+	assert Color.@none.cycle() == Color.@none
+	assert Color.red.cycle() == Color.green
+}
+
+type Animal = Cat | Dog
+
+fn test_smart_casting() {
+	{
+		animal := Animal(Dog{'Leonberger'})
+
+		if animal is Dog {
+			assert typeof(animal).name == 'test.Dog'
+		}
+
+		assert typeof(animal).name == 'test.Animal'
+
+		if mut animal is Dog {
+			assert typeof(animal).name == 'test.Dog'
+
+			animal.breed = 'abc'
+		}
+
+		assert typeof(animal).name == 'test.Animal'
+		assert animal.breed == 'abc'
+	}
+	{
+		mut animal := Animal(Dog{'Leonberger'})
+
+		if animal is Dog {
+			assert typeof(animal).name == 'test.Animal'
+		}
+
+		assert typeof(animal).name == 'test.Animal'
+
+		if mut animal is Dog {
+			assert typeof(animal).name == 'test.Dog'
+
+			animal.breed = 'abc'
+		}
+
+		assert typeof(animal).name == 'test.Animal'
+		assert animal.breed == 'abc'
+	}
+}
