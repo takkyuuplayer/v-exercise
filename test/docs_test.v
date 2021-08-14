@@ -435,7 +435,7 @@ fn twice(i int) int {
 
 fn test_thread() {
 	mut threads := []thread int{}
-	for i in 1..5 {
+	for i in 1 .. 5 {
 		threads << go twice(i)
 	}
 	r := threads.wait()

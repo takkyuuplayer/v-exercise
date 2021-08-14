@@ -43,11 +43,7 @@ fn binsearch(x int, v []int) int {
 			return mid
 		}
 	}
-	return if x == v[mid] {
-		mid
-	} else {
-		-1
-	}
+	return if x == v[mid] { mid } else { -1 }
 }
 
 fn binsearch2(x int, v []int) int {
@@ -62,9 +58,5 @@ fn binsearch2(x int, v []int) int {
 		}
 		mid = (low + high) / 2
 	}
-	return if x == v[mid] {
-		mid
-	} else {
-		-1
-	}
+	return if x == v[mid] { mid } else { -1 }
 }
