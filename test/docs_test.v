@@ -247,7 +247,7 @@ fn test_union() {
 			assert clr1.a == 0
 		}
 		clr2 := Rgba32{
-			Rgba32_Component: {
+			Rgba32_Component: Rgba32_Component{
 				a: 128
 			}
 		}
@@ -409,4 +409,35 @@ fn test_smart_casting() {
 		assert typeof(animal).name == 'test.Animal'
 		assert animal.breed == 'abc'
 	}
+}
+
+fn compare<T>(a T, b T) int {
+	if a < b {
+		return -1
+	}
+	if a > b {
+		return 1
+	}
+	return 0
+}
+
+fn test_generics() {
+	assert compare(1, 1) == 0
+	assert compare(1, 0) == 1
+	assert compare(0, 1) == -1
+
+	assert compare('0', 'a') == -1
+}
+
+fn twice(i int) int {
+	return i * 2
+}
+
+fn test_thread() {
+	mut threads := []thread int{}
+	for i in 1..5 {
+		threads << go twice(i)
+	}
+	r := threads.wait()
+	assert r == [2, 4, 6, 8]
 }
