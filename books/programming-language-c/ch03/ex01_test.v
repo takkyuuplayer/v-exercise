@@ -3,17 +3,17 @@
 import rand
 import benchmark
 
-fn test_binsearch() {
+fn test_binsearch() !{
 	mut v := [0]
 	rand.seed([u32(100), 0])
 	for i in 1 .. 10000000 {
-		if rand.intn(4) == 0 {
+		if rand.intn(4)! == 0 {
 			v << i
 		}
 	}
 	mut test_cases := []int{}
 	for _ in 1 .. 100 {
-		test_cases << rand.intn(v.len)
+		test_cases << rand.intn(v.len)!
 	}
 	mut bench := benchmark.new_benchmark()
 	for test_case in test_cases {

@@ -374,9 +374,9 @@ type Animal = Cat | Dog
 
 fn test_smart_casting() {
 	{
-		animal := Animal(Dog{'Leonberger'})
+		mut animal := Animal(Dog{'Leonberger'})
 
-		if animal is Dog {
+		if mut animal is Dog {
 			assert typeof(animal).name == 'test.Dog'
 		}
 
