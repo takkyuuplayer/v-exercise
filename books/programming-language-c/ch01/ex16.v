@@ -10,5 +10,5 @@ fn main() {
 			max_line = trimmed
 		}
 	}
-	println('$max_line.len: $max_line')
+	println('${max_line.len}: ${max_line}')
 }

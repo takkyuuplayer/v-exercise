@@ -24,7 +24,7 @@ fn test_string() {
 	{
 		// string interpolation
 		x := 123.4567
-		assert '$x' == '123.4567'
+		assert '${x}' == '123.4567'
 		assert '${x:4.2f}' == '123.46'
 		assert '${x:10}' == '   123.457'
 		assert '${int(x):-10}' == '123       '
@@ -58,7 +58,7 @@ fn test_array() {
 		// operator in
 		arr := [1, 2, 3]
 		assert 1 in arr
-		assert !(0 in arr)
+		assert 0 !in arr
 	}
 	{
 		// methods
@@ -411,7 +411,7 @@ fn test_smart_casting() {
 	}
 }
 
-fn compare<T>(a T, b T) int {
+fn compare[T](a T, b T) int {
 	if a < b {
 		return -1
 	}
@@ -436,7 +436,7 @@ fn twice(i int) int {
 fn test_thread() {
 	mut threads := []thread int{}
 	for i in 1 .. 5 {
-		threads << go twice(i)
+		threads << spawn twice(i)
 	}
 	r := threads.wait()
 	assert r == [2, 4, 6, 8]

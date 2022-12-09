@@ -1,6 +1,6 @@
 fn main() {
 	name := 'Bob'
-	println('Hello, $name!') // `$` is used for string interpolation
+	println('Hello, ${name}!') // `$` is used for string interpolation
 	println(name.len)
 	bobby := name + 'by' // + is used to concatenate strings
 	println(bobby) // "Bobby"

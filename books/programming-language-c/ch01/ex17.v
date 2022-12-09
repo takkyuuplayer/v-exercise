@@ -10,7 +10,7 @@ fn main() {
 	for line := os.get_raw_line(); line.len > 0; line = os.get_raw_line() {
 		trimmed := line.trim_right('\n')
 		if (trimmed.len >= threshold) {
-			println('$trimmed.len: $trimmed')
+			println('${trimmed.len}: ${trimmed}')
 		}
 	}
 }

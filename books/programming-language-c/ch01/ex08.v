@@ -14,5 +14,5 @@ fn main() {
 			tabs++
 		}
 	}
-	println('new_lines: $new_lines, tabs: $tabs, blanks: $blanks')
+	println('new_lines: ${new_lines}, tabs: ${tabs}, blanks: ${blanks}')
 }
