@@ -1,9 +1,6 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - "*"
   pull_request:
     branches:
       - "*"
@@ -14,25 +11,8 @@ jobs:
   ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout V
-        uses: actions/checkout@v3
-        with:
-          repository: vlang/v
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          path: repo
-      - name: Build V
-        run: |
-          make
-          sudo ./v symlink
-
-      - name: v vet .
-        run: |
-          cd repo
-          v vet .
-
-      - name: v test .
-        run: |
-          cd repo
-          v test .
+      - uses: vlang/setup-v
+      - uses: actions/checkout@v4
+      - run: v fmt -verify .
+      - run: v vet .
+      - run: v test .
