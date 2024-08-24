@@ -2,9 +2,7 @@
 // Kernighan, Brian W.. C Programming Language (p. 31). Pearson Education. Kindle Edition.
 import os
 
-const (
-	threshold = 80
-)
+const threshold = 80
 
 fn main() {
 	for line := os.get_raw_line(); line.len > 0; line = os.get_raw_line() {

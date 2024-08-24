@@ -2,9 +2,7 @@
 // Kernighan, Brian W.. C Programming Language (p. 24). Pearson Education. Kindle Edition.
 import strings
 
-const (
-	max_length = 200
-)
+const max_length = 200
 
 fn main() {
 	mut word_lengthes := [0].repeat(max_length)
