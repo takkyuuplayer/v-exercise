@@ -1,18 +1,21 @@
 name: CI
-
 on:
-  pull_request:
+  push:
     branches:
-      - "*"
-  schedule:
-    - cron: "0 0 * * *"
+      - "main"
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: vlang/setup-v
       - uses: actions/checkout@v4
+      - uses: vlang/setup-v@v1
+
       - run: v fmt -verify .
       - run: v vet .
       - run: v test .
