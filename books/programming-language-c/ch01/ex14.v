@@ -2,10 +2,8 @@
 // Kernighan, Brian W.. C Programming Language (p. 24). Pearson Education. Kindle Edition.
 import strings
 
-const (
-	lower_bound = `a`
-	upper_bound = `z`
-)
+const lower_bound = `a`
+const upper_bound = `z`
 
 fn main() {
 	mut char_counts := [0].repeat(int(upper_bound - lower_bound + 1))

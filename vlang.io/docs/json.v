@@ -10,7 +10,7 @@ struct User {
 	// Use the `skip` attribute to skip certain fields
 	foo Foo
 	// If the field name is different in JSON, it can be specified
-	last_name string [json: lastName]
+	last_name string @[json: lastName]
 }
 
 fn main() {

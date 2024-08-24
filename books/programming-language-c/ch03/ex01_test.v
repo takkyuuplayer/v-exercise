@@ -3,7 +3,7 @@
 import rand
 import benchmark
 
-fn test_binsearch() !{
+fn test_binsearch() ! {
 	mut v := [0]
 	rand.seed([u32(100), 0])
 	for i in 1 .. 10000000 {

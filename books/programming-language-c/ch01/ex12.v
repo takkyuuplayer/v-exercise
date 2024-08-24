@@ -1,9 +1,7 @@
 // Exercise 1-12. Write a program that prints its input one word per line.
 // Kernighan, Brian W.. C Programming Language (pp. 21-22). Pearson Education. Kindle Edition.
-const (
-	out_word = 0
-	in_word  = 1
-)
+const out_word = 0
+const in_word = 1
 
 fn main() {
 	mut state := out_word
