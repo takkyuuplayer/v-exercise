@@ -10,7 +10,7 @@ on:
       - synchronize
 defaults:
   run:
-    working-directory: ./src
+    working-directory: ./repo
 
 jobs:
   ubuntu:
@@ -19,7 +19,7 @@ jobs:
       - uses: vlang/setup-v@v1
       - uses: actions/checkout@v4
         with:
-          path: src
+          path: repo
 
       - run: v fmt -verify .
       - run: v vet .
