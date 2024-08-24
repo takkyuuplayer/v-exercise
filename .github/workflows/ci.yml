@@ -8,13 +8,18 @@ on:
       - opened
       - reopened
       - synchronize
+defaults:
+  run:
+    working-directory: ./src
 
 jobs:
   ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - uses: vlang/setup-v@v1
+      - uses: actions/checkout@v4
+        with:
+          path: src
 
       - run: v fmt -verify .
       - run: v vet .
